@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>DFGame.Program</StartupObject>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="cd Build&#xD;&#xA;call compileshaders %251 $(ProjectDir)Assets\Effects\ %252 $(ProjectDir)$(OutDir)Assets\Effects\&#xD;&#xA;&#xD;&#xA;xcopy /e /y /i /r /exclude:copyexclude.txt &quot;$(ProjectDir)References\Native&quot;  &quot;$(ProjectDir)$(OutDir)References\Native&quot;&#xD;&#xA;xcopy /e /y /i /r /exclude:copyexclude.txt &quot;$(ProjectDir)Assets&quot;  &quot;$(ProjectDir)$(OutDir)Assets&quot;" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ECS\ECS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FNA">
+      <HintPath>References\FNA.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
