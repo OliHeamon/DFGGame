@@ -1,31 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ECS.Core;
 
 namespace DFGame
 {
-    public class DFGame : Game
+    public class DFGame : ECSGame
     {
-        private GraphicsDeviceManager graphics;
+        private World world;
 
-        public DFGame()
+        protected override void Load()
         {
-            graphics = new GraphicsDeviceManager(this);
+            world = new World(1000);
         }
 
-        protected override void Initialize()
+        protected override void Unload()
         {
-            base.Initialize();
-        }
-
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        protected override void Draw(GameTime gameTime)
-        {
-            base.Draw(gameTime);
-
-            GraphicsDevice.Clear(Color.CornflowerBlue);
         }
     }
 }
